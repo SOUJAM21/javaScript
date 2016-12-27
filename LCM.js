@@ -7,18 +7,9 @@
 	
 	
 function getLCM( num1, num2){
-  var max;
-  var min;
-  
-  
-  if(num1 > num2){
-      max = num1;
-      min=num2;
-  }
-  else{
-      max = num2;
-      min = num1;
-  }
+  var max = Math.max(num1,num2)
+  var min = Math.min(num1,num2)
+ 
 		
 		if(max%min==0){
 			return max;
