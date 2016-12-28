@@ -1,28 +1,22 @@
-var person = {}
+function getPersons(fileName){
+    var fs = require("fs")
+    var info = fs.readFileSync(fileName, "utf-8")
 
-console.log(person)
 
-person.name = "Sourabh"
-person.age = 16
-person.email = "sj@gmail.com"
 
-var person2 = {}
-person2.name = "Sruti"
-person2.age = 23
-person2.email = "srutijam@gmail.com"
+    var lines = info.toString().split('\n')
 
-console.log(person.name)
+    var persons = []
+    for(var x = 0; x<lines.length; x++){
+         var person = {}
+         var parts = lines[x].split(" ")
+         person.name = parts[0]
+         person.age = parts[1]
+    
+        persons.push(person)
+    }
+    return persons;
+}
 
-console.log(person2.name)
+module.exports.getPersons = getPersons;
 
-var persons = []
-
-console.log(persons)
-
-persons.push(person,person2)
-
-console.log(persons)
-
-var userInput = prompt("Enter a number:")
-
-console.log(userInput)
