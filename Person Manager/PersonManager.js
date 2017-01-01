@@ -1,4 +1,8 @@
-function getPersons(fileName){
+
+var persons = [];
+
+
+function load(fileName){
     var fs = require("fs")
     var info = fs.readFileSync(fileName, "utf-8")
 
@@ -6,27 +10,49 @@ function getPersons(fileName){
 
     var lines = info.toString().split('\n')
 
-    var persons = []
     for(var x = 0; x<lines.length; x++){
-        var person = lines[x]
+        var personLine = lines[x]
+        
+         var parts = personLine.toString().split(' ')
+     
+     var person = {};
+     
+      person.name = parts[0]
+     person.age = parts[1]
     
         persons.push(person)
     }
     return persons;
 }
 
-	module.exports.getPersons = getPersons;
+function getPersons(){
+    return persons
+}
 	
 	
-function addPerson(name){
-    var fs = require('fs');
-    fs.appendFile("PartyList.txt", name + "\n" , function(fr) {
-    if(fr) {
-        return console.log(fr)
-    }
 
-    console.log("The file was saved!");
-});
+function addPerson(name,age) {
+	var p = {};
+	p.name = name;
+	p.age = age;
+	
+	persons.push(p.name,p.age)
+
 }
 
-	module.exports.addPerson = addPerson;
+function findPerson(searchName){
+    for(var i=0;i<persons.length;i++){
+        console.log(persons[i].name)
+        if(persons[i].name == searchName){
+            return persons[i]
+        }
+    }
+    
+    return null;
+    
+}
+
+module.exports.load = load
+module.exports.addPerson = addPerson;
+module.exports.getPersons = getPersons;
+module.exports.findPerson = findPerson;

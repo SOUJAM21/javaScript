@@ -1,35 +1,38 @@
 //Displaying Options
-var ps = require("./Menu")
-var Menu = ps.showOptions();
+var ps = require("./PersonManager")
+var persons = ps.load("PartyList.txt");
+
+var m = require("./Menu")
+var Menu = m.showOptions();
 
 
 //variable for option 4(adding name)
 var addName = "Jim"
 
 //variable for option 2(finding user)
-var searchName = "Bob"
+var searchName = "Sruti"
 
 //Choosing Menu Option
-var userInput = 4
-
+var userInput = 2
 
 
 
 //View Users
 if(userInput==1){
-    var ps = require("./PersonManager")
-    var persons = ps.getPersons("PartyList.txt");
-
-    console.log(persons)
+    console.log(ps.getPersons())
 }
 
 
 
 //find Users
 if(userInput==2){
-   var ps = require("./UI")
-   ps.findPerson("PartyList.txt", searchName)
-  
+  var p = ps.findPerson(searchName);
+  if(p == null){
+      console.log("Contact not found")
+  }
+  else{
+      console.log(p)
+  }
 }
 
 
@@ -44,8 +47,8 @@ if(userInput==3){
 
 //Adding User
 if(userInput==4){
-    var ps = require("./PersonManager")
-    ps.addPerson(addName);
+    ps.addPerson("bob",53)
+    console.log(ps.getPersons())
 }
 
 /**
