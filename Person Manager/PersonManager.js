@@ -42,9 +42,23 @@ function addPerson(name,age) {
 
 function findPerson(searchName){
     for(var i=0;i<persons.length;i++){
-        console.log(persons[i].name)
+       // console.log(persons[i].name)
+       
         if(persons[i].name == searchName){
             return persons[i]
+        }
+    }
+    
+    return null;
+    
+}
+
+function deletePerson(deleteName){
+        for(var i=0;i<persons.length;i++){
+       // console.log(persons[i].name)
+       
+        if(persons[i].name == deleteName){
+            persons.pop()
         }
     }
     
