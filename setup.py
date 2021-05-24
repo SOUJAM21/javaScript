@@ -1,5 +1,4 @@
-#import PySimpleGUI as sg
-import tkinter
+import PySimpleGUI as sg
 from tkinter import messagebox
 from threading import Timer
 from tkinter import * 
